@@ -12,8 +12,18 @@ services:
       - "3000:3000"
     depends_on: 
       - database_shifu
+      - webpack-dev-server
     links:
       - database_shifu:database_shifu
+
+  webpack-dev-server:
+    environment:
+      - "BUNDLE_PATH=/shifu/.gems"
+    working_dir: /shifu
+    build: .
+    volumes:
+      - "./:/shifu"
+    command: "bundle exec webpack-dev-server"
 
   database_shifu:
     image: postgres
