@@ -23,7 +23,7 @@ services:
     build: .
     volumes:
       - "./:/shifu"
-    command: "bundle exec webpack-dev-server"
+    command: "bundle exec webpack --watch"
 
   database_shifu:
     image: postgres
